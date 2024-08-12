@@ -70,7 +70,7 @@ buffer.seek(0)
 #Initialize GCLOUD Storage
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
-SERVICE_ACCOUNT_FILE = 'GDrive_Credentials.json'
+SERVICE_ACCOUNT_FILE = 'G_Drive_Credentials.json'
 
 creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE)
 drive_service = build('drive', 'v3', credentials=creds)
