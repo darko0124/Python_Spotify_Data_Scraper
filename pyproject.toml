@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "test-ubuntu-py"
+version = "0.1.0"
+description = "This is a test project for learning how to use poetry"
+authors = ["Darin"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.32.3"
+pandas = "^2.2.2"
+spotify = "^0.10.2"
+spotipy = "^2.24.0"
+google-auth = "^2.33.0"
+google-api-python-client = "^2.140.0"
+google-auth-oauthlib = "^1.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
