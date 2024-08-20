@@ -1,0 +1,2 @@
+In ubuntu folder /mnt/c/Users/darko/Ubuntu_Projects/test_Ubuntu_py use the command "docker run my-spotify-script" and the script will run and work
+If some changes are made in the code (test_Ubuntu_py.py file) first run the command "docker build -t my-spotify-script . " and the image will be rebuild
