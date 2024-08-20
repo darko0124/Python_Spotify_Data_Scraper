@@ -12,3 +12,4 @@
 🖊️ User Guide:
  - Download all the files and add your Client ID, Client Secret and Username in spotify_credentials.json
  - For the G_Drive_Credentials.json the script you have to obtain it manually from GCloud Console -> API and Services -> Credentials -> Download Auth Client -> Download JSON  or GCloud Console -> API and Services -> Credentials -> Service Account
+ - For the Spotify_Credentials.json you can obtain them from the Spotify website or search in Google how to do it
