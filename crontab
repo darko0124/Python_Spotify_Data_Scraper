@@ -1,0 +1,1 @@
+0 10 * * * python /usr/src/app/ETL_test.py >> /var/log/cron.log 2>&1

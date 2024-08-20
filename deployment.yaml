@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-spotify-script
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-spotify-script
+  template:
+    metadata:
+      labels:
+        app: my-spotify-script
+    spec:
+      containers:
+      - name: my-spotify-script
+        image: my-spotify-script:latest
+        imagePullPolicy: Never
+        command: ["python", "./ETL_test.py"]
