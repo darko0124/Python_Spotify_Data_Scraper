@@ -14,7 +14,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 # Read the credentials for Spotify and GCLOUD from the JSON file
-with open('/usr/src/app/spotify_credentials.json', 'r') as f:
+with open('spotify_credentials.json', 'r') as f:
     credentials = json.load(f)
 
 client_id = credentials['client_id']
@@ -77,7 +77,7 @@ buffer.seek(0)
 
 # Initialize Google Cloud Storage
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
-SERVICE_ACCOUNT_FILE = '/usr/src/app/G_Drive_Credentials.json'
+SERVICE_ACCOUNT_FILE = 'G_Drive_Credentials.json'
 
 creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 drive_service = build('drive', 'v3', credentials=creds)
@@ -85,10 +85,13 @@ drive_service = build('drive', 'v3', credentials=creds)
 
 # Check if the file already exists
 def find_file_id(file_name):
-    query = f"name='{file_name}'"
-    results = drive_service.files().list(q=query, fields="files(id)").execute()
+    query = f"name='{file_name}' and mimeType='text/csv'"
+    results = drive_service.files().list(q=query, fields="files(id, name, parents)").execute()
     files = results.get('files', [])
-    if files:
+
+    if len(files) > 0:
+        if len(files) > 1:
+            logging.warning(f"Multiple files found with the name '{file_name}'. Using the first one.")
         return files[0]['id']
     return None
 
