@@ -1,19 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: CronJob
 metadata:
-  name: my-spotify-script
+  name: python-cronjob
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: my-spotify-script
-  template:
-    metadata:
-      labels:
-        app: my-spotify-script
+  schedule: "*/30 * * * *"
+  jobTemplate:
     spec:
-      containers:
-      - name: my-spotify-script
-        image: my-spotify-script:latest
-        imagePullPolicy: Never
-        command: ["python", "./ETL_test.py"]
+      template:
+        spec:
+          containers:
+          - name: python-job
+            image: darko0124/ my-spotify-script-container:latest
+            command: ["python", "ETL_test.py"]  # Command to run your script
+          restartPolicy: OnFailure
